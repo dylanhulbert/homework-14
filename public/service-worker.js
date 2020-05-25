@@ -13,9 +13,11 @@ const DATA_CACHE_NAME = "data-cache-v1";
 self.addEventListener("install", function(evt) {
   evt.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
+      console.log("Cached");
       return cache.addAll(FILES_TO_CACHE);
     })
   );
+
   self.skipWaiting();
 });
 
@@ -25,12 +27,14 @@ self.addEventListener("activate", function(evt) {
       return Promise.all(
         keyList.map(key => {
           if (key !== CACHE_NAME && key !== DATA_CACHE_NAME) {
+            console.log("Removed", key);
             return caches.delete(key);
           }
         })
       );
     })
   );
+
   self.clients.claim();
 });
 
@@ -43,6 +47,7 @@ self.addEventListener("fetch", function(evt) {
             if (response.status === 200) {
               cache.put(evt.request.url, response.clone());
             }
+
             return response;
           })
           .catch(err => {
@@ -50,6 +55,7 @@ self.addEventListener("fetch", function(evt) {
           });
       }).catch(err => console.log(err))
     );
+
     return;
   }
 
