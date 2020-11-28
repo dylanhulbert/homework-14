@@ -6,6 +6,8 @@ The objective of this homework was to create a [PWA](https://en.wikipedia.org/wi
 
 Similar to [Homework 13](https://github.com/dylanhulbert/homework-13), the application uses automatic deployments on commit via [Heroku](https://www.heroku.com/) and a sandbox MongoDB db resource on [MLab](https://www.mlab.com/).
 
+11/28/20 - Updated MongoDB location, from mLab to [Atlas](https://www.mongodb.com/cloud/atlas).
+
 ## Technologies
 * [Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)
 * [Sevice Worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
